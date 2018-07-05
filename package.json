@@ -7,7 +7,7 @@
   "typings": "./ng-date-picker-advanced.d.ts",
   "scripts": {
     "build": "npm run clean && npm run build:inline && npm run build:esm2015 && npm run build:fesm2015 && npm run build:esm5 && npm run build:fesm5 && npm run build:umd && npm run build:inline && npm run build:min && npm run move:assets",
-    "build:inline": "cp *.ts tmp/ && cp src tmp/ && node ./inlineAssets.js",
+    "build:inline": "mkdir tmp && mkdir tmp/src && cp  src/*.ts tmp/src && node ./inlineAssets.js",
     "build:esm2015": "ngc -p tsconfig-esm2015.json",
     "build:fesm2015": "rollup -c rollup-esm2015.conf.js",
     "build:esm5": "ngc -p tsconfig-esm5.json",
