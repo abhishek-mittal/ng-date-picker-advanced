@@ -15,7 +15,7 @@
     "build:umd": "rollup -c rollup-umd.conf.js",
     "build:min": "uglifyjs dist/bundles/ng-date-picker-advanced.umd.js -c -m -o dist/bundles/ng-date-picker-advanced.umd.min.js",
     "move:assets": "cp -r tmp/esm2015/*.d.ts tmp/esm2015/src tmp/esm2015/*.json package.json Readme.md dist/",
-    "clean": "rm -rf dist/ && rm -rf temp/",
+    "clean": "rm -rf dist/ && rm -rf tmp/",
     "copyPackageJson": "cp package.json dist",
     "semantic-release": "semantic-release pre && npm run copyPackageJson && npm run publish dist && semantic-release post",
     "travis-deploy-once": "travis-deploy-once"
