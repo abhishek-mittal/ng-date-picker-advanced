@@ -20,7 +20,7 @@ import { DatePipe } from '@angular/common';
   },
   providers: [DatePipe]
 })
-export class InputDirective implements OnInit {
+export class ABInputDirective implements OnInit {
   
   @Input() id: string;
   @Input() date = '';
@@ -28,7 +28,7 @@ export class InputDirective implements OnInit {
 
   @HostBinding('value')private xyz = 'Select Date';
   private changes = new BehaviorSubject('');
-  private subscription = Subscription;
+  private subscription: any;
 
   constructor(private _dp: DatePipe) { }
   
