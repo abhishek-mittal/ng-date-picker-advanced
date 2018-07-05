@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "scripts": {
     "build": "npm run clean && npm run build:inline && npm run build:esm2015 && npm run build:fesm2015 && npm run build:esm5 && npm run build:fesm5 && npm run build:umd && npm run build:inline && npm run build:min && npm run move:assets",
-    "build:inline": "node ./inlineAssets.js",
+    "build:inline": "rsync -a *.ts ./tmp && node ./inlineAssets.js",
     "build:esm2015": "ngc -p tsconfig-esm2015.json",
     "build:fesm2015": "rollup -c rollup-esm2015.conf.js",
     "build:esm5": "ngc -p tsconfig-esm5.json",
