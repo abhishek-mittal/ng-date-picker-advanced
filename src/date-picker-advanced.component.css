@@ -1,0 +1,393 @@
+* {
+  border-color: #dee2e6;
+  transition: all 150ms ease-in-out;
+}
+
+.ab.ab-td {
+  /* margin: 1%;
+  padding: 20px 20px; */
+  /* height: 20px;
+  width: 20px;  */
+}
+
+.ab-date-cell {
+  background-color: white;
+  border-radius: 50%;
+  padding: 12px 11px;
+}
+
+tr {
+  border-bottom: none;
+}
+
+.ab.date-selected {
+  background-color: rgba(137, 50, 188, 0.84);
+  border-radius: 50%;
+}
+
+.table td,
+.table th {
+  padding: 4px;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.ab.ab-td {
+  cursor: pointer;
+}
+.ab.ab-td > div:hover {
+  transition: all ease-in-out 100ms;
+  background-color: #dee2e6;
+}
+.ab.ab-td-focus {
+  border: 1px solid #c2bcc8;
+}
+
+.day-row {
+  border-bottom: 1px solid #7e42a93d;
+}
+
+.ab-m-hover {
+  background-color: #d9d4da6e;
+}
+
+/* .ab.ab-month-container {
+  overflow: hidden;
+  padding: 0px 35px;
+  width: 23em;
+  background: #fff;
+  height: 28em;
+  color: black;
+} */
+
+.ab.ab-months {
+  display: inline-grid;
+  margin: 18px;
+  color: black;
+}
+.ab.ab-year-cell {
+  display: inline-grid;
+  margin: 8px;
+  color: white;
+}
+
+.ab.ab-month:nth-child(3n + 1) {
+  display: block;
+}
+
+/* checkbox */
+.ab.ab-checkbox {
+  display: block;
+  height: fit-content;
+  width: fit-content;
+  background-color: whitesmoke;
+  border-radius: 100%;
+  padding: 1em;
+  overflow: hidden;
+}
+
+.ab.ab-checkbox > input {
+  display: block;
+  height: 5em;
+  width: 5em;
+  /* visibility: hidden; */
+}
+
+.ab.ab-checkbox > span {
+  border: 2px solid;
+  position: absolute;
+  top: 20em;
+}
+
+/* year */
+.ab.ab-year-container {
+  width: 23em;
+  height: 21em;
+  overflow: auto;
+  padding: 7px;
+  margin: 22px;
+  scroll-behavior: smooth;
+}
+
+.ab.ab-year-container > span {
+  margin: 2px;
+  display: inline-grid;
+  padding: 16px;
+}
+
+/* to date */
+.to-range-date-container {
+  margin: 0px 0px 0px 10px;
+}
+
+.ab.ab-td-in-range {
+  box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.wide-date-range {
+  height: 34em;
+  width: 1%;
+  background-color: blue;
+  position: absolute;
+  top: 50.1%;
+  float: right;
+  right: 39.5em;
+}
+
+/* .activeRange {
+  position: relative;
+  background-color: #682797;
+  height: 28em;
+  width: 5px;
+  top: 0;
+  cursor: pointer;
+  float: right;
+} */
+/* .activeRange::after  {
+    content: ' ';
+    border-bottom: 4px solid;
+    border-right: 4px solid;
+    position: absolute;
+    left: -9%;
+    height: 14px;
+    width: 14px;
+    transform: rotate(-45deg);
+    top: 50%;
+} */
+
+.activeRange > input {
+  position: relative;
+  top: 49%;
+  width: 0px;
+  height: 18px;
+  visibility: visible;
+  background-color: bisque;
+}
+.activeRange > input::after {
+  content: " ";
+  border-bottom: 4px solid;
+  border-right: 4px solid;
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  left: 2.5px;
+  filter: opacity(0.8);
+  color: blueviolet;
+  transition: all 300ms ease-in-out;
+}
+
+.activeRange > input:checked::after {
+  transform: rotate(140deg);
+  left: 12px;
+}
+
+.activeRange > input:hover {
+  transform: scale(1.2, 1.2);
+}
+/* .activeRange:active{
+    position: absolute;
+    background-color: aqua;
+    height: 26em;
+    width: 1em;
+    top: 165px;
+    left: 67.6em;
+    z-index: -100;
+} */
+/* .activeRange:active::after {
+    content: ' ';
+    border-top: 4px solid;
+    border-left: 4px solid;
+    position: absolute;
+    left: 26%;
+    height: 14px;
+    width: 14px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 50%;
+} */
+
+#from-Selector {
+  margin-left: 10px;
+}
+
+.ab.ab-devider {
+  height: 32em;
+  border-left: 1px solid #582657;
+  display: block;
+  margin: -3.8em 0px;
+  z-index: 1;
+}
+
+/* #to-Selector-container.tocnt::after {
+  content: ' ';
+  
+  z-index: 0;
+} */
+
+div.inner-container {
+  position: relative;
+  display: inline;
+  margin: 0px 0px 0px 10px;
+}
+
+#to-Selector {
+  position: relative;
+  display: inline;
+  margin: 0px 0px 0px 10px;
+}
+
+.container {
+  background: #fff;
+  display: inline-flex;
+  height: 32em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: -2px 0px 0px 0px;
+  padding: 60px 0px;
+  box-shadow: 6px 9px 40px -14px;
+  /* border: 2px solid; */
+}
+
+/* .container::after  {
+  content: ' ';
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  border: 1px solid;
+  top: -59px;
+  right: 49.5%;
+} */
+
+/* div.header-bar {
+  background-color: white;
+  cursor: pointer;
+  height: 3em;
+  position: absolute;
+  width: 23em;
+  display: inline-block;
+  overflow: hidden;
+  top: 65px;
+  margin: -1px;
+} */
+
+div.header-bar > span:first-child {
+  display: inline-block;
+  background-color: white;
+  height: 48px;
+  padding: 10px 1em;
+  margin-right: 2px;
+  width: 14em;
+}
+div.header-bar > span:nth-child(2) {
+  display: inline-block;
+  background-color: white;
+  height: 48px;
+  padding: 0.8em 1em;
+  margin-right: 2px;
+}
+
+.date-picker {
+  display: inline-grid;
+}
+
+.ab.ab-year {
+  display: block;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 20em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  width: 25em;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  padding: 0em 0em 0em 0em;
+  margin: 0em 0em;
+  background-color: #fff;
+}
+
+.ab.ab-year > p > span {
+  cursor: pointer;
+  border-top: 1px solid #ffffff3d;
+  background-color: #fff;
+  padding-top: 5px;
+  width: 23.2em;
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
+  transition: all 200ms ease-in-out;
+}
+
+.ab.ab-year > p > span:first-child {
+  border: none;
+}
+
+.ab.ab-year > .year-hover {
+  border-top: 0px solid #ffffff3d;
+  transform: scale(1.5, 1.5);
+  /* transform-origin: 0% 0%; */
+}
+
+.ab.ab-focus {
+  box-shadow: 0 0 0 0.2rem rgba(236, 191, 243, 0.5);
+}
+
+/* keep */
+div.header-bar {
+  background-color: white;
+  cursor: pointer;
+  height: 3em;
+  position: relative;
+  width: 23em;
+  display: inline-block;
+  overflow: hidden;
+  top: -44px;
+  margin: -1px;
+}
+
+.ab-year-wrapper {
+  width: 23em;
+  overflow: hidden;
+  padding: 0em 2em 2em 0em;
+}
+
+.ab.ab-month-container {
+  overflow: hidden;
+  padding: 0px 35px;
+  width: 23em;
+  background: #fff;
+  height: 26em;
+  color: black;
+  position: relative;
+  top: -2em;
+}
+
+.activeRange {
+  position: relative;
+  background-color: #682797;
+  height: 32.1em;
+  width: 5px;
+  top: -61px;
+  cursor: pointer;
+  float: right;
+}
+
+.ab.ab-switch-singular {
+  display: inline;
+}
+
+.ab.ab-switch-singular > input {
+  margin-right: 2px;
+}
+
+.prevent-from-happening {
+  pointer-events:none;
+  background-color: #c2bcc8;
+}

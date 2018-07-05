@@ -1,0 +1,15 @@
+{
+    "extends": "./tsconfig-esm2015.json",
+    "compilerOptions": {
+        "target": "es5",
+        "outDir": "./tmp/esm5",
+        "rootDir": "./tmp"
+    },
+    "angularCompilerOptions": {
+        "annotateForClosureCompiler": true,
+        "strictMetadataEmit": true,
+        "skipTemplateCodegen": true,
+        "flatModuleOutFile": "ng-date-picker-advanced.js",
+        "flatModuleId": "ng-date-picker-advanced"
+    }
+}

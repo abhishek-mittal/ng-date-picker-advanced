@@ -1,0 +1,187 @@
+<div></div>
+<div class=" date-picker">
+  <div class="container">
+    <!-- from -->
+    <div id="from-Selector">
+
+      <div class="header-bar">
+        <span>
+          <button class="btn btn-outline-light" style="cursor: pointer;" (click)="startMonthSelected = endMonthSelected = startYearSelected = endYearSelected = false;scrollYearIntoView();">
+            <span style="color: black">
+              {{months[selectedMonth] + ' ' + selectedYear}}
+            </span>
+          </button>
+        </span>
+            <div class="ab ab-switch-singular">
+              <input type="checkbox" name="" id="singularSwitch" (change)="setSingularDatePicker($event.target.checked)">
+              <label for="singularSwitch">Singular</label>
+            </div>
+      </div>
+
+      <!-- year -->
+      <div class="ab-year-wrapper" *ngIf="!startYearSelected && !startMonthSelected">
+        <div class="ab ab-year">
+          <div class="ab ab-year-cell" *ngFor="let year of years" [ngClass]="{'ab-focus': (year === selectedYear),
+          'ab-m-hover': ( year === __today.getFullYear())
+        }">
+            <button style="width: 60px; border: none; color: black;" type="button" class="btn btn-outline-light ab" (click)=setCurrentYear(year)>
+              {{year}}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- months -->
+      <div class="ab ab-month-container" *ngIf="startYearSelected && !startMonthSelected">
+        <span style="position: relative;
+        display: block;
+        margin: 20px 20px 10px 20px;">
+          {{selectedYear}}
+        </span>
+        <div class="ab ab-months" *ngFor="let month of months; let i = index">
+          <button 
+          style="width: 60px; border: none;" 
+          type="button" 
+          [ngClass]="{
+            'ab-focus': (!isRangePicker && i === selectedMonth) || (isRangePicker && (i >= selectedMonth && i<=selectedEndMonth)),
+            'ab-m-hover': ( i === __today.getMonth() && selectedYear === __today.getFullYear())
+        }" 
+        class="btn btn-outline-light ab" 
+        (click)=setCurrentMonth(i)
+        [disabled]="checkFromMinMax(i)"
+        >
+            <span style="color: black">
+              {{month}}
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- day -->
+      <div class="inner-container" id="to-Selector" *ngIf="startMonthSelected">
+        <div class="from-range-date-container">
+          <table style="width: 23em">
+            <thead>
+              <tr class="day-row">
+                <th scope="col" *ngFor="let day of weekdays;" style="color: grey;">
+                  {{day}}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="padding: 1em 0em">
+                <span style="padding: 1em 0em;
+                color: rgba(0,0,0,.54);
+                display: block;">
+                  {{months[selectedMonth]}}
+                </span>
+              </tr>
+              <tr *ngFor="let dates of __dates_for_c1; let r = index">
+                <td style="overflow: hidden; height: 20px; width: 20px; margin: 2px;" [ngClass]="{'ab-td': date} " class="ab" *ngFor="let date of dates;">
+                  <div class="ab ab-date-cell" 
+                  [ngClass]="{'date-selected': checkFromInRange(date), 'ab-td-focus': checkForToday(date), 'ab-td-in-range': checkInRange(date)
+                  ,'prevent-from-happening': checkFromMinMaxDate(date)
+                }"
+                    style="align-content: center; text-align: center;" (click)="setCurrentDate(date)" *ngIf="date !== undefined">
+                    <!-- (mouseenter)="updateToDate($event.target)" -->
+                    {{date}}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>`
+      </div>
+    </div>
+
+
+    <span class="ab ab-devider"></span>
+    <!-- to -->
+    <!-- year -->
+    <div id="to-Selector-container" class="tocnt" *ngIf="isRangePicker && !singularDate">
+      <div class="header-bar">
+        <span>
+          <button class="btn btn-outline-light" style="cursor: pointer;" (click)="endMonthSelected = endYearSelected = false;scrollYearIntoView(1);">
+            <span style="color: black">
+              {{months[selectedEndMonth] + ' ' + selectedEndYear}}
+            </span>
+          </button>
+        </span>
+      </div>
+      <div class="ab-year-wrapper" *ngIf="!endYearSelected && !endMonthSelected">
+        <div class="ab ab-year">
+          <ng-template ngFor let-year [ngForOf]="years">
+            <div class="ab ab-year-cell" *ngIf="year >= selectedYear">
+              <button style="width: 60px; border: none; color: black;" type="button" class="btn btn-outline-light ab" (click)="setEndYear(year)"
+                [ngClass]="{'ab-focus': selectedEndYear === year, 
+                'ab-m-hover': ( year === __today.getFullYear())
+              }">
+                {{year}}
+              </button>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <!-- month -->
+      <div class="ab ab-month-container" *ngIf="endYearSelected && !endMonthSelected">
+        <span style="position: relative;
+          display: block;
+          margin: 20px 20px 10px 20px;">
+          {{selectedEndYear}}
+        </span>
+        <div class="ab ab-months" *ngFor="let emonth of months; let em = index">
+          <button [disabled]="!endYearSelected || ((em <= selectedMonth) && (selectedEndYear === selectedYear)) || checkToMinMax(em)" style="width: 60px; border: none;"
+            type="button" [ngClass]="{'ab-focus': (em >= selectedMonth && em<=selectedEndMonth),
+            'ab-m-hover': ( em === __today.getMonth() && selectedEndYear === __today.getFullYear())
+          }" class="btn btn-outline-light ab" (click)=setEndMonth(em)
+          >
+            <span style="color: black"
+            >
+              {{emonth}}
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- dates -->
+      <div class="inner-container" id="to-Selector" *ngIf="endMonthSelected">
+        <div class="to-range-date-container">
+          <table style="width: 23em">
+            <thead>
+              <tr class="day-row">
+                <th scope="col" *ngFor="let day of weekdays;" style="color: grey;">
+                  {{day}}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="padding: 1em 0em">
+                <span style="padding: 1em 0em;
+                  color: rgba(0,0,0,.54);
+                  display: block;">
+                  {{months[selectedEndMonth]}}
+                </span>
+              </tr>
+              <tr *ngFor="let dates of __dates_for_c2; let r = index">
+                <td style="overflow: hidden; height: 20px; width: 20px; margin: 2px;" [ngClass]="{'ab-td': date} " class="ab" *ngFor="let date of dates;">
+                  <div [attr.disabled]="false" class="ab ab-date-cell" [ngClass]="{
+                    'date-selected': checkToInRange(date), 'ab-td-focus': checkForToday(date), 'ab-td-in-range': checkInRange(date),
+                  'prevent-from-happening': checkToMinMaxDate(date)
+                  }"
+                    style="align-content: center; text-align: center;" (click)="setEndDate(date)" *ngIf="date !== undefined">
+                    <!-- (mouseenter)="updateToDate($event.target)" -->
+                    {{date}}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <span class="activeRange" *ngIf="!singularDate">
+      <input (change)="datePickerTypeChange($event.target.checked)" type="checkbox" name="PType" id="PType" />
+    </span>
+  </div>
+</div>
