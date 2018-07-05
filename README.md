@@ -1,27 +1,86 @@
-# LibraryMaker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
+# ng-date-picker-advanced
+## Installation
+<pre>
+<code>
+npm install ng-date-picker-advanced
+</code>
+</pre>
 
-## Development server
+> Note*: Bootstrap 4.x.x is required.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    import { DatePickeAdvancedModule } from 'ng-date-picker-advanced'
+   
+  
 
-## Code scaffolding
+> For dropdown style add few lines of code as followed.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ - `import { ABInputDirective } from 'ng-date-picker-advanced'`
+```
+<div  id="abDatePicker">
+<input  ABInput  disabled [id]="'datePicker'" (dateChange)="callFunction1($event)" />
+<i  class=" fas fa-chevron-circle-down"  for="datePicker" (click)="activateDatePicker = !activateDatePicker"></i>
+<app-date-picker-advanced [min]="min" [max]="max" [id]="'datePicker'" *ngIf="activateDatePicker"></app-date-picker-advanced>
+</div>
+```
 
-## Build
+> Note*: ID is required in case to prevent event emitter from invoking on every instance.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+ -
+  ```
+  #abDatePicker {
+}
+#abDatePicker > i {
+	color: blueviolet;
+	margin: 12px  -39px;
+	font-size: 30px;
+	position: absolute;
+	cursor: pointer;
+}
+```
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Demo
 
-## Running end-to-end tests
+ - Single Date Select
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+![](https://lh3.googleusercontent.com/0SE0gsj7kDwIpyI5pIczWxwl4sd-d1M9rkud5ed_qzY-K_cVhW0XgDxLkbD_kPcpds9HRWp_bjZs)
 
-## Further help
+* Date Range Select
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+![
+](https://lh3.googleusercontent.com/ypEchr0ioRmR3HlXWFUl3WUgbScnKE5yjVQwmzryfTD9kxRSThDq8nyHOSmsMWUq8-yo0_oSyBWH)
+
+## API
+
+**For: app-date-picker-advanced**
+
+| Name        | Description 
+| ------------- |:-------------:| -----:|
+| @Input() min: string| The minimum valid date.
+| @Input() max: string| The maximum valid date.
+| @Input() id: string| Required if using more than one instance on same component.
+
+**For: input - derivative [ABInput]**
+
+| Name        | Description 
+| ------------- |:-------------:| -----:|
+| @Input() dateChange: EventEmitter< Object >| Emits the output if the value.
+| @Input() id: string| Required if using more than one instance on same component.
+
+## Results
+
+Date-Range: 
+
+    {
+	    from: {
+		    date: Date,
+		    isValid: Boolean
+	    },
+		to: {
+		    date: Date,
+		    isValid: Boolean
+	    }
+    }
+
+Singular: Date

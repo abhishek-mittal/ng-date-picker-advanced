@@ -17,16 +17,29 @@
     "move:assets": "cp -r tmp/esm2015/*.d.ts tmp/esm2015/src tmp/esm2015/*.json package.json Readme.md dist/",
     "clean": "rm -rf dist/ && rm -rf temp/",
     "copyPackageJson": "cp package.json dist",
-    "ng": "ng",
-    "start": "ng serve",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
     "semantic-release": "semantic-release pre && npm run copyPackageJson && npm run publish dist && semantic-release post",
     "travis-deploy-once": "travis-deploy-once"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/abhishek-mittal/ng-date-picker-advanced.git"
+  },
+  "keywords": [
+    "ng-date-picker-advanced",
+    "date-picker",
+    "date",
+    "range",
+    "picker",
+    "angular",
+    "npm",
+    "current",
+    "bootstrap"
+  ],
+  "author": "Abhishek Mittal",
+  "license": "ISC",
+  "dependencies": {
+    "vinyl-fs": "^3.0.3",
+    "core-js": "^2.5.4",
+    "uglifyjs": "^2.4.11"
   }
 }
