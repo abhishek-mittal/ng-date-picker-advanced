@@ -1,4 +1,7 @@
 # ng-datepickeradvanced
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/abhishek-mittal/ng-date-picker-advanced.svg)](https://greenkeeper.io/)
+
 ## Installation
 <pre>
 <code>
