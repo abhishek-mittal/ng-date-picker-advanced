@@ -1,6 +1,7 @@
 {
   "name": "ng-date-picker-advanced",
   "version": "0.1.3-development",
+  "description": "Date Range Picker and Date Picker all in one place.",
   "main": "./bundles/ng-date-picker-advanced.umd.js",
   "module": "./esm5/ng-date-picker-advanced.js",
   "es2015": "./es2015/ng-date-picker-advanced.js",

@@ -1,3 +1,4 @@
+Date Range Picker and Date Picker all in one place.
 # ng-date-picker-advanced
 ## Installation
 <pre>
