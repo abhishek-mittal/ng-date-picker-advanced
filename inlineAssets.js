@@ -1,7 +1,7 @@
 const vfs = require("vinyl-fs");
 const inlineNg2Template = require("gulp-inline-ng2-template");
 
-const src = "./src/app";
+const src = "./src";
 const dest = "./tmp/src";
 
 vfs

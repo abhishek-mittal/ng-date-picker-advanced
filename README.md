@@ -1,4 +1,3 @@
-
 # ng-date-picker-advanced
 ## Installation
 <pre>
