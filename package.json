@@ -1,5 +1,5 @@
 {
-  "name": "ng-date-picker-advanced",
+  "name": "ng-datepickeradvanced",
   "version": "0.0.0-development",
   "description": "Date Range Picker and Date Picker all in one place..",
   "main": "./bundles/ng-date-picker-advanced.umd.js",
