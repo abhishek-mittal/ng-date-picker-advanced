@@ -15,10 +15,10 @@
     "build:fesm5": "rollup -c rollup-esm5.conf.js",
     "build:umd": "rollup -c rollup-umd.conf.js",
     "build:min": "uglifyjs dist/bundles/ng-date-picker-advanced.umd.js -c -m -o dist/bundles/ng-date-picker-advanced.umd.min.js",
-    "move:assets": "cp -r tmp/esm2015/*.d.ts tmp/esm2015/src tmp/esm2015/*.json package.json README.md dist/",
+    "move:assets": "cp -r tmp/esm2015/*.d.ts tmp/esm2015/src tmp/esm2015/*.json package.json README.md dist/ && npm run copyPackageJson",
     "clean": "rm -rf dist/ && rm -rf tmp/*",
     "copyPackageJson": "cp package.json dist",
-    "semantic-release": "cd dist && npm run copyPackageJson && npm run semantic-release",
+    "semantic-release": "npm run semantic-release",
     "travis-deploy-once": "travis-deploy-once"
   },
   "repository": {
@@ -83,6 +83,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "files": ["dist"]
+  }
 }
