@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { DatePipe } from '@angular/common';
 
 @Directive({
-  selector: '[appInput]',
+  selector: '[ABInput]',
   host: {
     'style': `font-family: cursive;
     background-color: white;

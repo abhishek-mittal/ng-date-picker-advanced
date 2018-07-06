@@ -1,20 +1,20 @@
-# ng-datepickeradvanced
+# ng-date-picker-advanced
 ## Installation
 <pre>
 <code>
-npm install ng-datepickeradvanced
+npm install ng-date-picker-advanced
 </code>
 </pre>
 
 > Note*: Bootstrap 4.x.x is required.
 
-    import { DatePickeAdvancedModule } from 'ng-datepickeradvanced'
+    import { DatePickeAdvancedModule } from 'ng-date-picker-advanced'
    
   
 
 > For dropdown style add few lines of code as followed.
 
- - `import { ABInputDirective } from 'ng-datepickeradvanced'`
+ - `import { ABInputDirective } from 'ng-date-picker-advanced'`
 ```
 <div  id="abDatePicker">
 <input  ABInput  disabled [id]="'datePicker'" (dateChange)="callFunction1($event)" />
