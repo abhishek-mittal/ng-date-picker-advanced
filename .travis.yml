@@ -7,9 +7,9 @@ notifications:
 node_js:
   - '9'
 script:
-  - npm run build
+  - npm run build 
 after_success:
-  - npm run semantic-release
+  - npm run travis-deploy-once "cd dist && npm run semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/

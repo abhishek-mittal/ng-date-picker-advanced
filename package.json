@@ -1,5 +1,5 @@
 {
-  "name": "ng-datepickeradvanced",
+  "name": "ng-date-picker-advanced",
   "version": "0.0.0-development",
   "description": "Date Range Picker and Date Picker all in one place..",
   "main": "./bundles/ng-date-picker-advanced.umd.js",
@@ -8,17 +8,17 @@
   "typings": "./ng-date-picker-advanced.d.ts",
   "scripts": {
     "build": "npm run clean && npm run build:inline && npm run build:esm2015 && npm run build:fesm2015 && npm run build:esm5 && npm run build:fesm5 && npm run build:umd && npm run build:min && npm run move:assets",
-    "build:inline": "rsync -a *.ts tmp/ && node ./inlineAssets.js",
+    "build:inline": "mkdir tmp && cp *.ts tmp/ && node ./inlineAssets.js",
     "build:esm2015": "ngc -p tsconfig-esm2015.json",
     "build:fesm2015": "rollup -c rollup-esm2015.conf.js",
     "build:esm5": "ngc -p tsconfig-esm5.json",
     "build:fesm5": "rollup -c rollup-esm5.conf.js",
     "build:umd": "rollup -c rollup-umd.conf.js",
     "build:min": "uglifyjs dist/bundles/ng-date-picker-advanced.umd.js -c -m -o dist/bundles/ng-date-picker-advanced.umd.min.js",
-    "move:assets": "cp -r tmp/esm2015/*.d.ts tmp/esm2015/src tmp/esm2015/*.json package.json README.md dist/",
-    "clean": "rm -rf dist/ && rm -rf tmp/",
+    "move:assets": "cp -r tmp/esm2015/*.d.ts tmp/esm2015/src tmp/esm2015/*.json package.json README.md dist/ && npm run copyPackageJson",
+    "clean": "rm -rf dist/ && rm -rf tmp/*",
     "copyPackageJson": "cp package.json dist",
-    "semantic-release": "semantic-release",
+    "semantic-release": "npm run semantic-release",
     "travis-deploy-once": "travis-deploy-once"
   },
   "repository": {
@@ -80,5 +80,8 @@
     "tslint": "~5.10.0",
     "typescript": "~2.9.2",
     "travis-deploy-once": "^5.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
